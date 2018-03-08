@@ -17,6 +17,9 @@ cache:
   paths:
     - .gradle/
 
+variables:
+  ANDROID_SDK: "26"
+
 stages:
   - analysis
   - test
@@ -45,7 +48,7 @@ unit_test:
 android_test:
   stage: test
   script:
-      - /utils/start-test-emulator.sh
+      - /utils/start-test-emulator.sh ${ANDROID_SDK}
       - ./gradlew connectedAndroidTest
   artifacts:
     paths:
