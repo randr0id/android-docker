@@ -1,10 +1,14 @@
 # Android Docker Image for GitLab CI
+[![License](http://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
+[![Docker Image](https://images.microbadger.com/badges/image/randr0id/gitlab-ci-android.svg)](https://microbadger.com/images/randr0id/gitlab-ci-android)
 
 _A Docker image for building and testing Android apps with GitLab CI._
 
 This Docker image contains the Android SDK and common packages required for building and testing Android apps with GitLab CI.
 
-## Example `.gitlab-ci.yml`
+Builds are available at Docker Hub: [https://hub.docker.com/r/randr0id/gitlab-ci-android/](https://hub.docker.com/r/randr0id/gitlab-ci-android/)
+
+## Example
 ~~~
 image: randr0id/gitlab-ci-android
 
