@@ -1,12 +1,12 @@
 #
 # GitLab CI: Android v0.2
 #
-# https://hub.docker.com/r/jangrewe/gitlab-ci-android/
-# https://git.faked.org/jan/gitlab-ci-android
+# https://hub.docker.com/r/randr0id/gitlab-ci-android/
+# https://gitlab.com/randr0id/gitlab-ci-android
 #
 
 FROM ubuntu:17.10
-MAINTAINER Jan Grewe <jan@faked.org>
+MAINTAINER Randy Webster <randy@randr0id.com>
 
 ENV VERSION_SDK_TOOLS "3859397"
 
@@ -49,3 +49,8 @@ RUN while read -r package; do PACKAGES="${PACKAGES}${package} "; done < /sdk/pac
     ${ANDROID_HOME}/tools/bin/sdkmanager ${PACKAGES}
 
 RUN yes | ${ANDROID_HOME}/tools/bin/sdkmanager --licenses
+
+RUN mkdir /utils
+COPY wait-for-emulator.sh /utils
+COPY start-test-emulator.sh /utils
+
