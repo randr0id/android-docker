@@ -28,6 +28,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get -qq update && \
     apt-get install -qqy --no-install-recommends \
+        build-essential \
         bzip2 \
         curl \
         git-core \
@@ -67,5 +68,4 @@ RUN mkdir /utils
 COPY wait-for-emulator.sh /utils
 COPY start-test-emulator.sh /utils
 
-VOLUME ["/sdk", "/utils"]
 CMD ${ANDROID_HOME}/tools/bin/sdkmanager --update

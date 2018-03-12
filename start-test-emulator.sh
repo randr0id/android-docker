@@ -1,13 +1,29 @@
 #!/usr/bin/env bash
 
-if [ $# -lt 1 ]; then
-    echo "Missing arguments!"
-    echo "Usage: start-test-emulator.sh <android_sdk>"
-    exit 1
-fi
+android=25
+abi=arm64-v8a
 
-androidSdk=$1
+usage="$(basename "$0") [-h] [-a android] [-b abi] -- Create and start an Android emulator.
 
-echo "no" | ${ANDROID_HOME}/tools/bin/avdmanager create avd -f -n android_test -b google_apis/x86 -k "system-images;android-${androidSdk};google_apis;x86"
+where:
+    -h: Show this help text
+    -a: Specify the emulator Android API (default: ${android})
+    -b: Specify the emulator ABI (default: ${abi})"
+
+while getopts ':hab:' option; do
+  case "$option" in
+    h) echo "$usage"
+        exit
+        ;;
+    a) android=${OPTARG}
+        ;;
+    b) abi=${OPTARG}
+        ;;
+  esac
+done
+shift $((OPTIND - 1))
+
+echo "Starting Android emulator with API ${android} and ABI ${abi}"
+echo "no" | ${ANDROID_HOME}/tools/bin/avdmanager create avd -f -n android_test -b "google_apis/${abi}" -k "system-images;android-${android};google_apis;${abi}"
 echo "no" | ${ANDROID_HOME}/tools/emulator @android_test -wipe-data -no-audio -no-window -verbose & ${BASH_SOURCE%/*}/wait-for-emulator.sh
 
