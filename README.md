@@ -16,11 +16,7 @@ cache:
   paths:
     - .gradle/
 
-variables:
-  ANDROID_SDK: "26"
-
 stages:
-  - analysis
   - test
   - build
 
@@ -28,8 +24,8 @@ before_script:
   - export GRADLE_USER_HOME=$(pwd)/.gradle 
   - chmod +x ./gradlew
 
-lint:
-  stage: analysis
+lint_test:
+  stage: test
   script:
     - ./gradlew lintRelease
   artifacts:
@@ -47,16 +43,15 @@ unit_test:
 android_test:
   stage: test
   script:
-    - /utils/start-test-emulator.sh ${ANDROID_SDK}
+    - /utils/start-test-emulator.sh
     - ./gradlew connectedAndroidTest
   artifacts:
     paths:
       - app/build/reports/androidTests/
 
-build_release:
+release_build:
   stage: build
   script:
-    - ./gradlew clean
     - ./gradlew assembleRelease
   artifacts:
     paths:
