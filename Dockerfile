@@ -1,8 +1,8 @@
 #
-# GitLab CI: Android v1.0
+# Android Docker v1.0
 #
-# https://hub.docker.com/r/randr0id/gitlab-ci-android
-# https://gitlab.com/randr0id/gitlab-ci-android
+# https://hub.docker.com/r/randr0id/android-docker
+# https://github.com/randr0id/android-docker
 #
 
 FROM ubuntu:17.10
@@ -12,12 +12,12 @@ ARG BUILD_DATE
 ARG VCS_REF
 
 LABEL org.label-schema.schema-version="1.0"
-LABEL org.label-schema.name="randr0id/gitlab-ci-android"
-LABEL org.label-schema.description="A Docker image for building and testing Android apps with GitLab CI."
+LABEL org.label-schema.name="randr0id/android-docker"
+LABEL org.label-schema.description="A Docker image for building and testing Android apps."
 LABEL org.label-schema.version="1.0"
 LABEL org.label-schema.build-date=${BUILD_DATE}
-LABEL org.label-schema.url="https://hub.docker.com/r/randr0id/gitlab-ci-android"
-LABEL org.label-schema.vcs-url="https://github.com/randr0id/gitlab-ci-android"
+LABEL org.label-schema.url="https://hub.docker.com/r/randr0id/android-docker"
+LABEL org.label-schema.vcs-url="https://github.com/randr0id/android-docker"
 LABEL org.label-schema.vcs-ref=${VCS_REF}
 
 ENV VERSION_SDK_TOOLS "3859397"
