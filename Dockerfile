@@ -38,6 +38,7 @@ RUN apt-get -qq update && \
         lib32gcc1 \
         lib32ncurses5 \
         lib32z1 \
+        lsb_release \
         openjdk-8-jdk \
         qemu-kvm \
         unzip \
