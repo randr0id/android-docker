@@ -65,7 +65,8 @@ RUN while read -r package; do PACKAGES="${PACKAGES}${package} "; done < /sdk/pac
 RUN yes | "${ANDROID_HOME}/tools/bin/sdkmanager" --licenses
 
 RUN mkdir /utils
-COPY wait-for-emulator.sh /utils
+COPY install-google-cloud-sdk.sh /utils
 COPY start-test-emulator.sh /utils
+COPY wait-for-emulator.sh /utils
 
 CMD ${ANDROID_HOME}/tools/bin/sdkmanager --update
