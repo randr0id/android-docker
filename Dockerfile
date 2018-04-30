@@ -47,7 +47,7 @@ RUN rm -f /etc/ssl/certs/java/cacerts; \
     /var/lib/dpkg/info/ca-certificates-java.postinst configure
 
 RUN curl -s "https://dl.google.com/android/repository/sdk-tools-linux-${VERSION_SDK_TOOLS}.zip" > /sdk.zip && \
-    unzip /sdk.zip -d /sdk && \
+    unzip /sdk.zip -d ${ANDROID_HOME} && \
     rm -v /sdk.zip
 
 RUN mkdir -p "${ANDROID_HOME}/licenses/" && \
