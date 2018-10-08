@@ -5,7 +5,7 @@
 # https://github.com/randr0id/android-docker
 #
 
-FROM ubuntu:17.10
+FROM ubuntu:18.04
 LABEL maintainer="randy@randr0id.com"
 
 ARG BUILD_DATE
@@ -20,14 +20,14 @@ LABEL org.label-schema.url="https://hub.docker.com/r/randr0id/android-docker"
 LABEL org.label-schema.vcs-url="https://github.com/randr0id/android-docker"
 LABEL org.label-schema.vcs-ref=${VCS_REF}
 
-ENV VERSION_SDK_TOOLS "3859397"
+ENV VERSION_SDK_TOOLS "4333796"
 
 ENV ANDROID_HOME "/sdk"
 ENV PATH "${PATH}:${ANDROID_HOME}/tools"
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get -qq update && \
-    apt-get install -qqy --no-install-recommends \
+RUN apt -qq update && \
+    apt install -qqy --no-install-recommends \
         build-essential \
         bzip2 \
         curl \
@@ -69,4 +69,4 @@ COPY install-google-cloud-sdk.sh /utils
 COPY start-test-emulator.sh /utils
 COPY wait-for-emulator.sh /utils
 
-CMD ${ANDROID_HOME}/tools/bin/sdkmanager --update
+CMD "${ANDROID_HOME}/tools/bin/sdkmanager" --update
