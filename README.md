@@ -9,7 +9,7 @@ Builds are available at Docker Hub: [https://hub.docker.com/r/randr0id/android-d
 
 
 ## License
-    Copyright 2018 Randy Webster. All rights reserved.
+    Copyright 2021 Randy Webster. All rights reserved.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
